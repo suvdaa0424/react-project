@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, Card, Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import Header from '../components/Header'
 import { actionRemoveRecipe } from '../redux/actions/favorites'
 
 import { Link } from 'react-router-dom'
