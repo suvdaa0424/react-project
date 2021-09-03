@@ -46,11 +46,11 @@ function Header() {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="/">Food Recipe</Navbar.Brand>
+                <Navbar.Brand href="/">Bite Me GOOD</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav as={Link} to="/" style={{ color: 'white', textDecoration: 'none' }}>Home</Nav>&nbsp;
+                        <Nav as={Link} to="/" style={{ color: 'white', textDecoration: 'none' }}>Home</Nav>&nbsp;&nbsp;&nbsp;
                         <Nav as={Link} to="/favorites" style={{ color: 'white', textDecoration: 'none' }} >Favorites</Nav>
                     </Nav>
                 </Navbar.Collapse>

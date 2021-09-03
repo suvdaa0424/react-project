@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { Button, Card } from 'react-bootstrap';
+import { Button, Card, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { actionSaveRecipe } from '../redux/actions/favorites';
 import { actionSetSearch } from '../redux/actions/search'
-
+import '../components/Home.css'
+import { GoSearch } from 'react-icons/go';
 
 function Home() {
     const dispatch = useDispatch()
@@ -28,37 +29,46 @@ function Home() {
             })
     }
     return (
-        <div>
-            <h1>Homepage</h1>
-            <form onSubmit={handleSubmit}>
-                <input
-                    placeholder="Search Ingredients" value={search} onChange={(e) => dispatch(actionSetSearch(e.target.value))}
-                />
-                <button type="submit">Submit</button>
-            </form>
-            <div className="row" >
-                {recipes.map((recipe, index) => {
-                    return (
+        <div className="home">
+            <div>
+                <h1 className="homeTitle">Bon Appétit</h1>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        className="searchBar" size="40" placeholder="Search Ingredients" value={search} onChange={(e) => dispatch(actionSetSearch(e.target.value))}
+                    />
+                    <button type="submit"><GoSearch /></button>
+                </form>
+                <br />
+                <Container >
+                    <div className='row justify-content-center' style={{ display: "flex" }} >
+                        {recipes.map((recipe, index) => {
+                            return (
+
+                                <Card className="col-sm-3" key={index} style={{ margin: '10px 10px', width: '18rem' }}>
+                                    <Card.Img variant="top" style={{ padding: '10px' }}src={recipe.image} />
+                                    <Card.Body>
+                                        <Card.Title>{recipe.title}</Card.Title>
+                                        <Card.Text style={{margin: '20px'}}> Cook Time : {recipe.readyInMinutes} minutes
+                                        </Card.Text>
+                                        <div className='row justify-content-around' style={{ display: "flex" }}>
+                                            <Link style={{color: 'purple', fontWeight: 'bold' , textDecoration: 'none' ,padding:'10px'}} to={`/details/${recipe.id}`}>Details</Link>
+                                            <br />
+                                            <Button onClick={() => { handleSave(recipe) }} variant="primary" style={{borderColor:'black',backgroundColor: 'grey'}}>Save</Button>
+                                        </div>
+                                    </Card.Body>
+                                </Card>
+
+                            )
+                        })}
+                    </div>
+                </Container>
 
 
-                        <Card className="col-sm-3" key={index} style={{ margin: '10px 0', width: '18rem' }}>
-                            <Card.Img variant="top" src={recipe.image} />
-                            <Card.Body>
-                                <Card.Title>{recipe.title}</Card.Title>
-                                <Card.Text> Cook Time : {recipe.readyInMinutes} minutes
-                                </Card.Text>
-                                <Button onClick={() => { handleSave(recipe) }} variant="primary">Save</Button>
-                                <Link to={`/details/${recipe.id}`}>Details</Link>
-                            </Card.Body>
-                        </Card>
-                    )
-                })}
+
             </div>
-
-
-
         </div>
     )
 }
 
 export default Home
+

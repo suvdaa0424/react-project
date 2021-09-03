@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Card } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom'
+import '../components/Details.css'
 
 function Details() {
     const { id } = useParams()
     const [details, setDetails] = useState(null);
-// const [listItem, setListItem ] = useState('')
+    // const [listItem, setListItem ] = useState('')
     useEffect(() => {
         fetch(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=dcd1b4599a3b406fa61e24437190a2f2`)
             .then((res) => res.json())
@@ -18,37 +19,32 @@ function Details() {
     if (!details) {
         return "";
     }
-    
+
     // JSON.parse(details.instructions, (key, value) => {
     //     console.log(key);
     //     setListItem(value);     
     //   });
 
     return (
-        <div>
-            <Card className="col-sm-3" style={{ margin: '10px 0', width: '18rem' }}>
-                <Card.Img variant="top" src={details.image} />
-                <Card.Body>
-                    <Card.Title>{details.title}</Card.Title>
-                    <Card.Text> Ingredients : {details.extendedIngredients.map((ingredient, index) => {
+        <div className="image">
+            <img className="image__img" src={details.image} alt="food" />
+            <div className="image__overlay image__overlay--blur">
+                <div className="row">
+                    <div className="image__title">{details.title}</div>
+                    <h3>Ingredients</h3>
+                    <p className="image__description">{details.extendedIngredients.map((ingredient, index) => {
                         return (
                             <span key={index}>
-                                {ingredient.original} <br /> 
+                                {ingredient.original} <br />
                             </span>
                         )
-                    })} 
-                                </Card.Text>
-                                <Card.Text>
-                                    Instructions 
-                                </Card.Text>
-                    {/* <Button onClick={() => { handleSave(recipe) }} variant="primary">Save</Button> */}
-                    {/* <Link to={`/details/${.id}`}>Details</Link> */}
-                </Card.Body>
-            </Card>
-            <div dangerouslySetInnerHTML={{__html:details.instructions}}>
+                    })} </p>
+                    <h3>Instructions</h3>
+                    <div className="image__instructions" dangerouslySetInnerHTML={{ __html: details.instructions }}></div>
+                </div>
             </div>
-
         </div>
+
     )
 }
 

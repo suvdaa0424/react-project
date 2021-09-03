@@ -1,0 +1,15 @@
+.favorites {
+    background-image: url("./favoritesBackground.jpg");
+    position: fixed;
+    width: 100%;
+    height: calc(100vh - 56px); 
+    /* guilgehed bugdiig ni haruulna */
+    background-size: cover;
+    background-position: right;
+    overflow: auto;
+}
+
+h1 {
+    color: rgb(228, 221, 213);
+    padding: 25px;
+}

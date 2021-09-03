@@ -1,7 +1,14 @@
 .App {
   text-align: center;
+  background-image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fphotos%2Ffood&psig=AOvVaw3T7qh27M6c_DRcqhXneqHK&ust=1630593197472000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIi315uD3vICFQAAAAAdAAAAABAP';
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
 }
 
+/* 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +42,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

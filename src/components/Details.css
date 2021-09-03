@@ -1,0 +1,66 @@
+.image {
+    position: relative;
+    width: 100%;
+}
+
+.image__img {
+    display: block;
+    width: 100vw;
+    height: calc(100vh - 56px);
+    position: fixed;
+    object-fit: cover;
+    padding: 5vh;
+}
+
+.image__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 56px);
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    font-family: 'Quicksand' , sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.25s;
+    padding: 20px;
+    overflow: auto;
+}
+
+.image__overlay--blur {
+    backdrop-filter: blur(5px);
+}
+
+/* .image__overlay > * {
+    transform: translateY(20px);
+    transition: transform 0.25s;
+} */
+
+.image__overlay:hover {
+    opacity: 1;
+}
+
+.image__title {
+    font-size: 3.25em;
+    font-weight: bold;
+
+}
+
+.image__description {
+    font-size: 1.25em;
+    margin-top: 0.25em;
+}
+
+.image__instructions {
+    text-align: left;
+    font-size: 1.25em;
+    margin-top: 0.25em;
+}
+
+h3 {
+    font-weight: bold;
+    padding: 15px;
+}
